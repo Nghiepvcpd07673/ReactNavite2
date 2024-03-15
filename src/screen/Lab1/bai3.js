@@ -1,20 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-import Input from '../../component/Input/input'
-import Button from '../../component/Button'
+import React, { useState } from 'react'
+
 
 const Bai3 = () => {
-  const [passwrod, setPassword] = usekk
   return (
-    <View>
-        
-      <Input/>
-     
-    </View>
+   <View/>
   )
-}
-
+  }
 export default Bai3
-const style = StyleSheet.create({
- 
-})
