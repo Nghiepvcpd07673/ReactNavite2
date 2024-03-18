@@ -1,35 +1,29 @@
-import { FC, memo } from "react";
-import { StyleSheet, Text, View, ViewStyle } from "react-native"
+
+import { View, Text, StyleSheet, ViewStyle } from 'react-native'
+import React, { FC, memo } from 'react'
 
 type FooterType = {
-    timeUpdate: string;
-    backgroudColor :string;
+  timeUpdate: string;
+  backgroundColor: string;
 }
 
-export const Footer:FC<FooterType> = memo(props =>{
-    const {timeUpdate, backgroudColor} = props;
-    return (
-        <View style={containerStyle({
-            height:100,
-            backgroundColor:backgroudColor,
-            alignItems:'center',
-            justifyContent:'center'
-            
-        })}>
-            <Text style={styles.textStyle}>
-            Cập nhật vào ngày  {timeUpdate}
-            </Text>
-        </View>
-    )
+const Footer: FC<FooterType> = memo(props => {
+  const {timeUpdate, backgroundColor} = props
+  console.log('re-Render Footer');
+  return (
+    <View style={containerStyle({height:100, backgroundColor:backgroundColor,alignItems:'center',justifyContent:'center',marginTop:'80%'})}>
+      <Text style={styles.textStyle}>Cập nhật vào ngày 15/3/2024 {timeUpdate}</Text>
+    </View>
+  )
 })
 const styles = StyleSheet.create({
-    textStyle:{
-        fontSize:18,
-        fontWeight:'bold',
-        textAlign:'center'
-    }
-
+  textStyle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  }
 })
-const containerStyle =(props:ViewStyle)=>({
-    ...props,
+const containerStyle = (props: ViewStyle) => ({
+  ...props,
 })
+export{Footer}

@@ -11,6 +11,7 @@ import Timer from './src/screen/demo/Timer';
 import UserContentScreen from './src/screen/demo/Provider_useContext';
 import DemoLab3 from './src/screen/Lab3/DemoLab3';
 import Main from './src/screen/Lab2/Main';
+import Header from './src/component/Header';
 
 const App = () => {
   return (

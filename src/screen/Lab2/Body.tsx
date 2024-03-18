@@ -1,40 +1,63 @@
-import {Button, StyleSheet, Text, TextInput, ToastAndroid, View } from "react-native";
-import { UserType } from "./Main";
-import { FC, memo, useState } from "react";
 
-type BodyType ={
-    onUpdateInfor: (user: UserType) => void;
-    onClickChangeBgFooter: () => void;
+import { View, Text, TextInput, Button, StyleSheet, ToastAndroid } from 'react-native'
+import React, { FC, memo, useState } from 'react'
+import { UserType } from './Main'
+
+
+type BodyType = {
+  onUpdateInfor:(uaer: UserType) => void;
+  onClickChangeBgFooter:()=>void;
 }
-export const Body :FC<BodyType> = memo(props =>{
-    const {onUpdateInfor, onClickChangeBgFooter} = props;
-    const [name, setName] = useState('');
-    const [linkImage,setLinkImage] =useState('');
-    const handleChangeInfo = () =>{
-        if(name.length> 0 && linkImage.length>0){
-            onUpdateInfor({name,avtar:linkImage});
-        }else{
-            ToastAndroid.show('Khong duoc de trong',ToastAndroid.SHORT);
-        }
+ const  Body:FC<BodyType> = memo (props => {
+  console.log('re-Render Body');
+  const {onUpdateInfor, onClickChangeBgFooter} = props
+  const [name, setName] = useState('')
+  const [linkImage, setLinkImage] = useState('')
+  const handleChangeInfor = () =>{
+    if(name.length > 0 && linkImage.length > 0){
+      onUpdateInfor({name, avatar:linkImage})
+    }else{
+      ToastAndroid.show('Khong duoc de trong',ToastAndroid.SHORT)
     }
-    return (
-        <View>
-           <TextInput style={style.input} placeholder="input name?"/>
-           <TextInput style={style.input} placeholder="input link image?"/>
-           <Button title="Update Infor" onPress={onUpdateInfor}/>
+  }
+return (
+  <View >
+    <View style={styles.containerStyle}>
+    <TextInput value={name} onChangeText={setName} style={styles.input} placeholder='input name' placeholderTextColor="white"/>
+    <TextInput value={linkImage} onChangeText={setLinkImage} style={styles.input} placeholder="Enter your text here"
+  placeholderTextColor="white"/>
+    </View>
 
-           <Button title="Change Color Footer" onPress={onClickChangeBgFooter}/>
-        </View>
-    )
+    <View style={styles.buttoninput}>
+    <Button title='Update Infor'onPress={handleChangeInfor}/>
+    </View>
+    <View style={styles.buttoninput}>
+    <Button title='Change Color Footer' onPress={onClickChangeBgFooter}/>
+    </View>
+  </View>
+)
 })
-const style = StyleSheet.create({
-input:{
+export{Body}
+const styles = StyleSheet.create({
+  input:{
     height:40,
-    width:370,
+    width:'90%',
     marginBottom:10,
     borderWidth:1,
     padding:10,
-    alignItems:'center',
-    justifyContent:'center'
-}
+    borderRadius:10
+    
+  },
+  containerStyle:{
+   alignItems:'center',
+  },
+  buttoninput:{
+    width:'90%',
+    marginLeft:20,
+    marginTop:20,
+    
+  }
+
+
 })
+
