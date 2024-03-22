@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
     marginBottom:10,
     borderWidth:1,
     padding:10,
-    borderRadius:10
-    
+    borderRadius:10,
+    color:'white'
   },
   containerStyle:{
    alignItems:'center',

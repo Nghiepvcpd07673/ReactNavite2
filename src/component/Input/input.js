@@ -1,40 +1,46 @@
-import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Input = () => {
   const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [hidePassword, setHidePass] = useState(true);
+
   return (
-
-    <SafeAreaView>
-      <View>
+    <View>
+      <TextInput
+        style={style.input}
+        placeholder='UserName'
+        value={userName}
+        onChangeText={setUserName} />
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <TextInput
-
-          value={userName}
-          style={styles.container}
-          placeholder='User Name'
-          secureTextEntry={true}
-          onChangeText={(user) => setUserName(user)}
+          placeholder='Password'
+          secureTextEntry={hidePassword}
+          value={password}
+          onChangeText={setPassword}
+          style={style.input}
         />
-          <Text>{userName}</Text>
-
-      
+        <TouchableOpacity onPress={() => setHidePass(!hidePassword)} style={{ right: 42, backgroundColor: '#89C6D9', width: 'auto', height: 47, justifyContent: 'center', borderTopRightRadius: 8, borderBottomRightRadius: 8 }}>
+          <Icon name={hidePassword ? 'eye-slash' : 'eye'} size={20} color={'black'} />
+        </TouchableOpacity>
       </View>
-    </SafeAreaView>
-  )
-}
+    </View>
+  );
+};
 
-export default Input
-
-const styles = StyleSheet.create({
-  container: {
-    width: '90%',
-    height: 50,
-    borderRadius: 5,
-    borderColor: '#7777',
+export default Input;
+const style = StyleSheet.create({
+  input: {
     borderWidth: 1,
-    marginLeft: 10,
-    marginVertical:10,
-    paddingHorizontal:20
-
+    borderColor: 'black',
+    width: '90%',
+    height: 'auto',
+    paddingRight: 40,
+    paddingLeft: 20,
+    margin: 20,
+    marginVertical: 8,
+    borderRadius: 10
   }
 })
